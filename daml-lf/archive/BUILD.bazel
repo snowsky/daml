@@ -128,6 +128,7 @@ da_scala_test_suite(
 daml_compile(
   name = "DarReaderTest",
   main_src = "src/test/daml/DarReaderTest.daml",
+  damlc = "//daml-foundations/daml-tools/da-hs-damlc-app:da-hs-damlc-app-depreceated"
 )
 
 filegroup(
