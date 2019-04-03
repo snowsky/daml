@@ -19,7 +19,7 @@ import org.scalatest.{Assertion, Matchers, WordSpec}
 class LargeTransactionTest extends WordSpec with Matchers {
 
   private[this] val largeTransactionId = "daml-lf/tests/LargeTransaction.dalf"
-  private[this] val ghcPrimId = "daml-foundations/daml-ghc/package-database/daml-prim-1.1.dalf"
+  private[this] val ghcPrimId = "daml-foundations/daml-ghc/package-database/daml-prim-1.3.dalf"
 
   private[this] val largeTx: (PackageId, Ast.Package) = loadArchiveAsResource(largeTransactionId)
   private[this] val ghcPrim: (PackageId, Ast.Package) =
