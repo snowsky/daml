@@ -37,10 +37,10 @@ object LedgerFactories {
   private def getPackageIdOrThrow(path: Path): Ref.PackageId =
     getPackageId(path).fold(t => throw t, identity)
 
-  def createSandboxResource(config: PlatformApplications.Config)(
+  def createSandboxResource(config: PlatformApplications.Config, jdbcUrl: Option[String])(
       implicit esf: ExecutionSequencerFactory): Resource[LedgerContext.SingleChannelContext] = {
     val packageIds = config.darFiles.map(getPackageIdOrThrow)
-    SandboxServerResource(PlatformApplications.sandboxApplication(config)).map {
+    SandboxServerResource(PlatformApplications.sandboxApplication(config, jdbcUrl)).map {
       case PlatformChannels(channel) =>
         LedgerContext.SingleChannelContext(channel, config.ledgerId, packageIds)
     }
@@ -48,7 +48,6 @@ object LedgerFactories {
 
   def createRemoteServerResource(config: PlatformApplications.Config, host: String, port: Int)(
       implicit esf: ExecutionSequencerFactory): Resource[LedgerContext.SingleChannelContext] = {
-
     val packageIds = config.darFiles.map(getPackageIdOrThrow)
     RemoteServerResource(host, port).map {
       case PlatformChannels(channel) =>
