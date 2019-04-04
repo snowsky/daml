@@ -6,6 +6,9 @@ Release notes
 
 This page contains release notes for the SDK.
 
+- Java Code Generator: Supports DAML TextMap primitive which is mapped to ``java.util.Map`` type with keys restricted
+to ``java.lang.String`` instances.
+
 0.12.0
 ------
 

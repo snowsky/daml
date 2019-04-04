@@ -105,6 +105,7 @@ private[codegen] object CodeGenRunner extends StrictLogging {
     logger.warn(s"Finish writing file '$outputFile'")
   }
 
+  @SuppressWarnings(Array("org.wartremover.warts.Any"))
   private[CodeGenRunner] def generateCode(
       interfaces: Seq[Interface],
       conf: Conf,
